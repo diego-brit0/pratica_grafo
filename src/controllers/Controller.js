@@ -14,7 +14,7 @@ class Controller {
             return res.status(200).json(NovoRegistro);
 
         } catch(erro) {
-            return res.status(500).json({mensagem: `Erro de servidor`})
+            return res.status(500).json({ erro: erro.message })
         }    
     }
 
@@ -23,7 +23,7 @@ class Controller {
             const listaDeRegistro = await this.entidadeService.pegaTodosOsRegistros();
             return res.status(200).json(listaDeRegistro);
         } catch ( erro ) {
-        //erro
+            return res.status(500).json({erro: erro.message })
         }
     }
 
@@ -41,9 +41,7 @@ class Controller {
                 });    
             }
         } catch (erro) {
-            return res.status(400).json({
-                    mensagem: `registro não foi encontrado` 
-            });
+            return res.status(400).json({ erro: erro.mensage });
         }
     }
 
@@ -63,9 +61,7 @@ class Controller {
                     mensagem: `Atualizado com sucesso` 
                 });
         } catch (erro) {
-            return res.status(400).json({
-                    mensagem: `registro não foi atualizado` 
-            });
+            return res.status(400).json({ erro: erro.mensage });
         }
     }
 
@@ -86,9 +82,7 @@ class Controller {
             });
 
         } catch (erro) {
-            return res.status(400).json({
-                    mensagem: `registro não foi deletado` 
-            });
+            return res.status(500).json({ erro: erro.mensage });
         }
     }
 
