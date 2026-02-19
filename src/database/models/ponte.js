@@ -24,7 +24,16 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Ponte',
-    tableName: 'pontes'
+    tableName: 'pontes',
+    paranoid: true,
+    // defaultScope: { //criação de scopo padrão trabalhando com filtro de where na consulta de objetos que atende o objeto criado internamente.
+    //   where: {ativo:true}
+    // }
+    scopes: { //criação de scopo criado, trabalhando no lugar do scopo padrão pode ser chamado para trabalhar com filtro de onjetos criado dentro dele.
+      todosOsRegistro: {
+        where: {}
+      }
+    }
   });
   return Ponte;
 };

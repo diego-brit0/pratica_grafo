@@ -6,6 +6,11 @@ class PonteServices extends Services {
         super('Ponte');
     }
 
+    async pegaPontesEscopoTodos() {
+        const listPontes = await super.pegaRegistroPorEscopo('todosOsRegistro');
+        return listPontes;
+    }
+
     
 }
 

@@ -9,6 +9,15 @@ class PonteController extends Controller {
     super(ponteServices);
   }
 
+  async pegaTodasAsPontes(req, res) {
+    try{
+      const listaTodosAsPontes = await ponteServices.pegaPontesEscopoTodos();
+      return res.status(200).json(listaTodosAsPontes);
+    }catch (erro) {
+      return res.status(500).json({ erro: erro.message });
+    }
+  }
+
 }
 
 module.exports = PonteController;
