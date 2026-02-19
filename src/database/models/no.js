@@ -20,7 +20,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   No.init({
-    nome: DataTypes.STRING,
+    nome: {
+      type: DataTypes.STRING,
+      // validate: { //criação de validação para campo do objeto
+      //   isEmail: {
+      //     args: true,
+      //     msg: 'formato do email inválido'
+      // }
+    },
   }, {
     sequelize,
     modelName: 'No',
