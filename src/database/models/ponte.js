@@ -20,7 +20,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Ponte.init({
-    peso: DataTypes.INTEGER
+    peso: {
+      type: DataTypes.INTEGER,
+      validate: {
+        
+      }
+    }
   }, {
     sequelize,
     modelName: 'Ponte',

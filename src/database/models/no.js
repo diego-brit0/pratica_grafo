@@ -22,12 +22,13 @@ module.exports = (sequelize, DataTypes) => {
   No.init({
     nome: {
       type: DataTypes.STRING,
-      // validate: { //criação de validação para campo do objeto
-      //   isEmail: {
-      //     args: true,
-      //     msg: 'formato do email inválido'
-      // }
-    },
+      validate: { //criação de validação para campo do objeto
+        len: {
+          args: [1,10],
+          msg: 'O campo nome deve ter no minimo 3 caracteres'
+        }
+      },
+    }
   }, {
     sequelize,
     modelName: 'No',
